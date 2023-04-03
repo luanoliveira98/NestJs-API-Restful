@@ -3,7 +3,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 
 @Controller('/users')
 export class UserController {
-  private userRepository = new UserRepository();
+  constructor(private userRepository: UserRepository) {}
 
   @Post()
   async createUser(@Body() userData) {
