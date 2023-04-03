@@ -4,4 +4,8 @@ export class UserRepository {
   async store(user) {
     this.users.push(user);
   }
+
+  async list() {
+    return this.users;
+  }
 }
