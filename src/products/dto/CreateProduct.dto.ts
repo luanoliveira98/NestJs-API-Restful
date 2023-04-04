@@ -8,6 +8,7 @@ import {
   IsNumber,
   ArrayMinSize,
   MaxLength,
+  IsUUID,
 } from 'class-validator';
 
 class CharacteristicProductDTO {
@@ -60,4 +61,7 @@ export class CreateProductDTO {
   @IsString()
   @IsNotEmpty()
   category: string;
+
+  @IsUUID()
+  userId: string;
 }
