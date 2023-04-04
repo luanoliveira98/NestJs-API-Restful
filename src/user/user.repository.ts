@@ -21,12 +21,18 @@ export class UserRepository {
     return emailAlreadyExists !== undefined;
   }
 
-  async update(id: string, userData: Partial<UserEntity>) {
-    const userToUpdate = this.users.find((user) => user.id === id);
+  private getById(id: string) {
+    const userById = this.users.find((user) => user.id === id);
 
-    if (!userToUpdate) {
+    if (!userById) {
       throw new Error('User does not exist');
     }
+
+    return userById;
+  }
+
+  async update(id: string, userData: Partial<UserEntity>) {
+    const userToUpdate = this.getById(id);
 
     Object.entries(userData).forEach(([key, value]) => {
       if (key === 'id') return;
@@ -35,5 +41,13 @@ export class UserRepository {
     });
 
     return userToUpdate;
+  }
+
+  async remove(id: string) {
+    const userToRemove = this.getById(id);
+
+    this.users = this.users.filter((user) => user.id !== userToRemove.id);
+
+    return userToRemove;
   }
 }
