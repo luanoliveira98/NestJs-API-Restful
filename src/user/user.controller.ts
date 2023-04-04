@@ -44,10 +44,10 @@ export class UserController {
 
   @Put('/:id')
   async updateUser(@Param('id') id: string, @Body() userData: UpdateUserDTO) {
-    const userUpdated = await this.userRepository.update(id, userData);
+    const user = await this.userRepository.update(id, userData);
 
     return {
-      user: userUpdated,
+      user,
       message: 'user updated successfully',
     };
   }
