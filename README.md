@@ -15,7 +15,7 @@
 </p>
 
 <h4 align="center">
-  📚 In study... 📚
+  🎓 Finished study 🎓
 </h4>
 
 <p align="center">
